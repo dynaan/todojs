@@ -1,0 +1,13 @@
+
+
+
+
+#allTodo {
+    height:100vh;
+    width: 100vw;
+    /* background-color: #600404; */
+}
+.check {
+  
+  text-decoration:line-through;
+}
