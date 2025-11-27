@@ -1,33 +1,27 @@
 const addBtn=document.getElementById("addBtn");
 const todoInput=document.getElementById("todoInput");
+let id=0;
 
-function removeTodo(id){
-    
-    let div = document.getElementById(id);
-    div.remove();
-       
-    
+
+function removeTodo(currentId){  
+    let div = document.getElementById(currentId);
+    div.remove();   
 }
 
-function UncheckTodo(id) {
-    let div = document.getElementById(id);
-    
+function UncheckTodo(currentId) {
+   
+    let div = document.getElementById(currentId);
     console.log(div);
-    //  .classList.toggle("check")
-    
-
-    
-    
+    div.childNodes[1].classList.toggle("check")
 }
 
 
-let id=1;
 addBtn.addEventListener('click',(e)=>{
-    e.preventDefault();
-    
+ let currentId =id++;
+e.preventDefault();
 let div = document.createElement("div");
 div.setAttribute("class","singleTodo");
-div.setAttribute("id",id);
+div.setAttribute("id",currentId);
 let val=todoInput.value;
 
 if(val=='') {
@@ -35,18 +29,14 @@ if(val=='') {
 }
 else {
 div.innerHTML=
- ` 
-                
-          <h2>${val}</h2>
-          <input type="checkBox" name="" id="" onClick="UncheckTodo(${id})">
-          <button onClick=removeTodo(${id})>removeTodo</button>
-          
-            
+   `           
+         <h2>${val}</h2>
+          <input type="checkBox" name="" id="" onClick="UncheckTodo(${currentId})">
+          <button onClick=removeTodo(${currentId})>removeTodo</button>         
    `
    document.getElementById("allTodo").appendChild(div);
    todoInput.value = '';
   
-
 } 
 })
 
